@@ -5,7 +5,6 @@ import {AuthProvider} from './hooks/useContext/AuthContext';
 import Toast from 'react-native-toast-message';
 import {store} from './reduxToolkit/store';
 import {Provider} from 'react-redux';
-import TopLevelStack from './navigation/TopLevelStack';
 import {
   QueryClient,
   QueryClientProvider,
