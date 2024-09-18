@@ -1,0 +1,34 @@
+image: reactnativecommunity/react-native-android:v12.0
+
+stages:
+  - build
+  - deploy
+cache: 
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+build:
+  stage: build
+  script:
+    - npm install --legacy-peer-deps
+    - cd android
+    - chmod +x ./gradlew
+   # - ./gradlew cleanBuildCache --offline --incremental --parallel --build-cache
+    - ./gradlew build --refresh-dependencies --offline --incremental --parallel --build-cache
+    - ./gradlew assembleRelease --offline --incremental --parallel --build-cache
+  artifacts:
+    paths:
+      - android/app/src/release/app-release.apk
+  only:
+    - developer
+
+   
+# deploy:
+#   stage: deploy
+#   script:
+#     - expo start --non-interactive --no-dev --minify
+#   environment:
+#     name: production
+#     url: $EXPO_URL # You need to set this variable in your GitLab project settings
+#   only:
+#     - master
