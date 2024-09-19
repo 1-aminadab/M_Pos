@@ -1,24 +1,21 @@
-import {Linking} from 'react-native';
-import React, {useContext, useState, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {AuthProvider} from './hooks/useContext/AuthContext';
+import {AuthProvider} from './src/hooks/useContext/AuthContext';
 import Toast from 'react-native-toast-message';
-import {store} from './reduxToolkit/store';
+import {store} from './src/reduxToolkit/store';
 import {Provider} from 'react-redux';
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import IntroScreen from './screens/Intro';
-import {getIntro, setIntro} from './database/services/introService';
+import IntroScreen from './src/screens/Intro';
+import {getIntro, setIntro} from './src/database/services/introService';
 // import realm from './database';
-import SplashScreen from './screens/Splash';
-import SyncService from './SyncService';
-import useGetRealmData from './hooks/customHooks/useGetRealmData';
-import orderSync from './orderSync';
+import SplashScreen from './src/screens/Splash';
+import SyncService from './src/SyncService';
 import Sound from 'react-native-sound'
-import { PreferenceProvider } from './hooks/useContext/PreferenceContext';
-import DrawerStack from './navigation/DrawerStack';
+import { PreferenceProvider } from './src/hooks/useContext/PreferenceContext';
+import DrawerStack from './src/navigation/DrawerStack';
 // import {
 //   startBackgroundService,
 //   stopBackgroundService,
